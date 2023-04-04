@@ -1,1 +1,27 @@
+# mais um exemplo do capitulo 2 nesse caso os valores de linha multiplicado pela coluna (x*y), e colocando as componentes de outras cores no 0, da um efeito diferente na imagem
 
+
+
+import cv2
+imagem = cv2.imread('astronauta.jpg')
+
+
+print('Largura em pixels: ', end='')
+print(imagem.shape[1]) #largura da imagem
+print('Altura em pixels: ', end='')
+print(imagem.shape[0]) #altura da imagem
+print('Qtde de canais: ', end='')
+print(imagem.shape[2])
+
+
+for y in range(0, imagem.shape[0], 1): #percorre as linhas
+    for x in range(0, imagem.shape[1], 1): #percorre as colunas
+        imagem[y, x] = (0,(x*y)%126,0)
+
+
+cv2.imshow("Imagem modificada", imagem)
+cv2.imwrite("astronauta.jpg", imagem)
+cv2.waitKey(0) 
+
+
+#lembrando que usei uma imagem do computador de um astronauta por isso o nome "astronauta"
