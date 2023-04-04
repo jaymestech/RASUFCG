@@ -1,1 +1,24 @@
+# nessa situação é para demostrar a alteração das imagens onde incluímos as variáveis de linha e coluna
+# para serem as componentes de cor, é usado o "resto da divisão" para fazer alteração, também mudei o exemplo para um original
 
+
+
+import cv2
+imagem = cv2.imread('astronauta.jpg')
+
+
+print('Largura em pixels: ', end='')
+print(imagem.shape[1]) #largura da imagem
+print('Altura em pixels: ', end='')
+print(imagem.shape[0]) #altura da imagem
+print('Qtde de canais: ', end='')
+print(imagem.shape[2])
+
+
+for y in range(0, imagem.shape[0]): #percorre linhas
+    for x in range(0, imagem.shape[1]): #percorre colunas
+        imagem[y, x] = (x%200,y%226,x%656)
+
+cv2.imshow("Imagem modificada", imagem)
+cv2.imwrite("astronauta.jpg", imagem)
+cv2.waitKey(0) 
