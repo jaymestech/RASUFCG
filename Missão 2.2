@@ -1,1 +1,24 @@
 
+# nesse primeiro exemplo do capitulo 2, ele trás um jeito interessante de mostrar a modificação dos pixels de uma imagem, então no exmeplo do livro
+# é feito a "varrida" em toda a imagem, fiz uma alteração para varrer apenas uma parte da imagem para mostrar a liberdade do usuário nessa "varrida"
+
+
+import cv2
+imagem = cv2.imread('photos/astronauta.jpg')
+
+# foi mantido essa configuração de largura dos pixels do primeiro capítulo
+
+print('Largura em pixels: ', end='')
+print(imagem.shape[1]) #largura da imagem
+print('Altura em pixels: ', end='')
+print(imagem.shape[0]) #altura da imagem
+print('Qtde de canais: ', end='')
+print(imagem.shape[2])
+
+
+for y in range(250, imagem.shape[0]):
+    for x in range(40, imagem.shape[1]):
+        imagem[y, x] = (40,0,0)
+cv2.imshow("Imagem modificada", imagem)
+cv2.imwrite("astronauta.jpg", imagem)
+cv2.waitKey(0) 
