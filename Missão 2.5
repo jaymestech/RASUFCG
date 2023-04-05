@@ -1,0 +1,26 @@
+#ultimo exemplo do livro no qual o objetivo agora é saltar
+#a cada 10 pixels ao percorrer as linhas e mais 10 pixels ao percorrer as colunas,a cada salto é
+#criado um quadrado amarelo de 6x6 pixels
+
+
+import cv2
+imagem = cv2.imread('astronauta.jpg')
+
+
+print('Largura em pixels: ', end='')
+print(imagem.shape[1]) #largura da imagem
+print('Altura em pixels: ', end='')
+print(imagem.shape[0]) #altura da imagem
+print('Qtde de canais: ', end='')
+print(imagem.shape[2])
+
+
+for y in range(0, imagem.shape[0], 10): #percorre linhas
+    for x in range(0, imagem.shape[1], 10): #percorre colunas
+        imagem[y:y+6, x: x+6] = (0,200,254)
+
+
+
+cv2.imshow("Imagem modificada", imagem)
+cv2.imwrite("astronauta.jpg", imagem)
+cv2.waitKey(0)
